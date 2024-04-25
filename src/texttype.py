@@ -6,4 +6,4 @@ class TextType(Enum):
         ITALIC = auto()
         CODE = auto()
         LINK = auto()
-        IMAG = auto()
+        IMAGE = auto()
