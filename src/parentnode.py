@@ -10,6 +10,9 @@ class ParentNode(HTMLNode):
             raise ValueError("Parent nodes need a tag")
         if len(self.children) == 0:
             raise ValueError("Parent nodes need children")
-        result = f"<{self.tag}></{self.tag}>"
+        result = f"<{self.tag}>"
+        for children in self.children:
+            result += children.to_html()
+        result+= f"</{self.tag}>"
         return result
         
