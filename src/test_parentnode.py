@@ -51,4 +51,4 @@ class TestParentNode(unittest.TestCase):
     def test_performance_multiple_nested_children(self):
         children = [LeafNode(f"item{i}", "li") for i in range(1, 1000)]
         parent = ParentNode(children, "ul")
-        print(parent.to_html())
+        parent.to_html()
