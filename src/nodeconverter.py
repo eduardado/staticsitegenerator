@@ -85,3 +85,9 @@ class NodeConverter:
         for pattern in patterns:
             matches.extend(re.findall(pattern, text))
         return len(matches) > 0
+
+    def extract_markdown_images(self, text):
+        return re.findall(r"!\[(.*?)\]\((.*?)\)", text)
+
+    def extract_markdown_links(self, text):
+        return re.findall(r"\[(.*?)\]\((.*?)\)", text)

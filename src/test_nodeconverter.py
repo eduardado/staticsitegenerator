@@ -4,6 +4,7 @@ from leafnode import LeafNode
 from textnode import TextNode
 from nodeconverter import NodeConverter
 from texttype import TextType
+import re
 
 class TestNodeConverter(unittest.TestCase):
 
@@ -175,5 +176,14 @@ class TestNodeConverter(unittest.TestCase):
             old_nodes = [node]
             new_nodes = self.nodeconverter.split_nodes_delimiter(old_nodes, TextType.ITALIC)
 
+    def test_images_extraction(self):
+        text = "This is text with an ![image](https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/zjjcJKZ.png) and ![another](https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/dfsdkjfd.png)"
+        images = self.nodeconverter.extract_markdown_images(text)
+        self.assertEqual(images, [("image", "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/zjjcJKZ.png"), ("another", "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/dfsdkjfd.png")])
+
+    def test_links_extraction(self):
+        text = "This is text with a [link](https://www.example.com) and [another](https://www.example.com/another)"
+        links = self.nodeconverter.extract_markdown_links(text)
+        self.assertEqual(links, [("link", "https://www.example.com"), ("another", "https://www.example.com/another")])
 
 
