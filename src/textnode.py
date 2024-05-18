@@ -14,4 +14,4 @@ class TextNode:
     
     def __repr__(self):
         text_type_str = self.text_type.name.lower() if self.text_type else 'None'
-        return f"TextNode({self.text}, {text_type_str}, {self.url})"
+        return f"TextNode(text:{self.text}, text_type:{text_type_str}, url:{self.url})"

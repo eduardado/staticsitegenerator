@@ -11,7 +11,9 @@ class TestTextNode(unittest.TestCase):
 
     def test_link_with_url(self):
         node = TextNode("Responsive web design portfolio", TextType.LINK, "https://eduardado.github.io/")
-        self.assertEqual(node.__repr__(), "TextNode(Responsive web design portfolio, link, https://eduardado.github.io/)")
+        self.assertEqual(node.text, "Responsive web design portfolio")
+        self.assertEqual(node.text_type, TextType.LINK)
+        self.assertEqual(node.url, "https://eduardado.github.io/")
 
     def test_link_type_without_url(self):
         node = TextNode("Responsive web design portfolio", TextType.LINK)
