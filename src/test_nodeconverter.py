@@ -186,4 +186,13 @@ class TestNodeConverter(unittest.TestCase):
         links = self.nodeconverter.extract_markdown_links(text)
         self.assertEqual(links, [("link", "https://www.example.com"), ("another", "https://www.example.com/another")])
 
+    def test_images_extraction_list(self):
+        text = "This is text with an ![image](https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/zjjcJKZ.png) and ![another](https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/dfsdkjfd.png)"
+        images = self.nodeconverter.extract_markdown_images(text)
+        self.assertListEqual(images, [("image", "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/zjjcJKZ.png"), ("another", "https://storage.googleapis.com/qvault-webapp-dynamic-assets/course_assets/dfsdkjfd.png")])
+
+    def test_links_extraction_list(self):
+        text = "This is text with a [link](https://www.example.com) and [another](https://www.example.com/another)"
+        links = self.nodeconverter.extract_markdown_links(text)
+        self.assertListEqual(links, [("link", "https://www.example.com"), ("another", "https://www.example.com/another")])
 
