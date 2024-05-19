@@ -1,4 +1,9 @@
-from texttype import TextType
+text_type_text = "text"
+text_type_bold = "bold"
+text_type_italic = "italic"
+text_type_code = "code"
+text_type_link = "link"
+text_type_image = "image"
 
 class TextNode:
 
@@ -13,5 +18,21 @@ class TextNode:
                 self.url == other.url)
     
     def __repr__(self):
-        text_type_str = self.text_type.name.lower() if self.text_type else 'None'
-        return f"TextNode(text:{self.text}, text_type:{text_type_str}, url:{self.url})"
+        return f"TextNode(text:{self.text}, text_type:{self.text_type}, url:{self.url})"
+
+    def text_node_to_html_node(text_node):
+        if text_node.text_type == text_type_text:
+            return LeafNode(text_node.text, None)
+        if text_node.text_type == text_type_bold:
+            return LeafNode(text_node.text, "b")
+        if text_node.text_type == text_type_italic:
+            return LeafNode(text_node.text, "i")
+        if text_node.text_type == text_type_code:
+            return LeafNode(text_node.text, "code")
+        if text_node.text_type == text_type_link:
+            return LeafNode(text_node.text, "a", {"href": text_node.url})
+        if text_node.text_type == text_type_image:
+            return LeafNode("", "img", {"src": text_node.url, "alt": text_node.text} )
+        raise ValueError(f"Invalid text type: {text_node.text_type}")
+
+        
