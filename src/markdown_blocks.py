@@ -88,7 +88,7 @@ def block_to_html_node(block):
     # identifies the block type and invoques the right function to transform the block into its correct html node
     block_type = block_to_block_type(block)
     if block_type == block_type_paragraph:
-        return paragraph_to_html_node(block):
+        return paragraph_to_html_node(block)
     if block_type == block_type_heading:
         return heading_to_html_node(block)
     if block_type == block_type_code:
@@ -122,7 +122,7 @@ def paragraph_to_html_node(block):
 def heading_to_html_node(block):
     level = 0
     for char in block:
-        if char == "#"
+        if char == "#":
             level += 1
         else:
             break
@@ -136,7 +136,7 @@ def heading_to_html_node(block):
     return ParentNode(children, f"h{level}")
 
 def code_to_html_node(block):
-    if not block startswith("```") or not block.endswith("```"):
+    if not block.startswith("```") or not block.endswith("```"):
         raise ValueError("Invalid code block")
     # text between backticks and next line
     text = block[4:-3]
