@@ -70,7 +70,7 @@ def markdown_to_html_node(markdown):
     # creates an empty list for the children of the top hiearchy div block
     children = []
     # For each block
-    for block in block:
+    for block in blocks:
         # creates an html node using a new function
         html_node = block_to_html_node(block)
         # add the html node in the list
