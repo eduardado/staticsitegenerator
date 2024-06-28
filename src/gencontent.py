@@ -4,12 +4,10 @@ import os
 def generate_page(from_path, template_path, dest_path):
     print(f" * {from_path} {dest_path} -> {template_path}")
 
-    # from_file instead of f, more descriptive
-    from_file  = open(from_path, "r") # opens the file to read
+    from_file  = open(from_path, "r")
     markdown_content = from_file.read()
     from_file.close()
 
-    # template file instead of f, more descriptive
     template_file = open(template_path)
     template = template_file.read()
     template_file.close
@@ -35,7 +33,7 @@ def extract_title(markdown):
     for line in lines:
         stripped_line = line.strip()
         if stripped_line.startswith("# "):
-            return stripped_line[2:] # from the third char till the end
+            return stripped_line[2:]
     raise ValueError("Not title found")
 
 
