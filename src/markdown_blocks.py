@@ -84,7 +84,7 @@ def block_to_html_node(block):
         return olist_to_html_node(block)
     if block_type == block_type_ulist:
         return ulist_to_html_node(block)
-    if block_type == block_type_quote(block):
+    if block_type == block_type_quote:
         return quote_to_html_node(block)
     raise ValueError("Invalid block type")
 
